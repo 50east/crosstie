@@ -17,13 +17,13 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
-group :test do
-  gem 'database_cleaner', '~> 0.7.2'
-  gem 'mocha', '~> 0.13.1'
-end
-
 group :development, :test do
   gem 'minitest-rails', '~> 0.3.0'
+end
+
+group :test do
+  gem 'database_cleaner', '~> 0.7.2'
+  gem 'mocha', '~> 0.13.1', require: false
 end
 
 # To use Jbuilder templates for JSON

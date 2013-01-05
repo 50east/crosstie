@@ -15,6 +15,9 @@ if defined?(Bundler)
   # Bundler.require(:default, :assets, Rails.env)
 end
 
+# TODO: remove this when we goto rails 4
+require File.expand_path('../../lib/secure_password', __FILE__)
+
 module Crosstie
   class Application < Rails::Application
 
@@ -30,6 +33,7 @@ module Crosstie
     # -- all .rb files in that directory are automatically loaded.
 
     # Custom directories with classes and modules you want to be autoloadable.
+    # config.autoload_paths += %W(#{config.root}/lib)
     # config.autoload_paths += %W(#{config.root}/extras)
 
     # Only load the plugins named here, in the order given (default is alphabetical).

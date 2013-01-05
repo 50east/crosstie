@@ -24,7 +24,7 @@ class User
   validates_presence_of :email
   validates_uniqueness_of :email, :case_sensitive => false
   validates_format_of :email, :allow_blank => true, :with => /\A[^@]+@([^@\.]+\.)+[^@\.]+\z/
-  validates_confirmation_of :password, :if => lambda { u.password.present? }
+  validates_confirmation_of :password, :if => lambda { |u| u.password.present? }
   validates_presence_of     :password, :on => :create
   validates :password, :length => { :within => 6..40 }, :on => :create
   validates :password, :length => { :within => 6..40 }, :on => :update, :if => lambda { |u| u.password.present? }
