@@ -3,9 +3,9 @@ require "minitest_helper"
 describe User do
   before(:each) do
     @attributes = {
-      :email => "user@example.com",
-      :password => "foobar",
-      :password_confirmation => "foobar",
+      email: "user@example.com",
+      password: "foobar",
+      password_confirmation: "foobar",
     }
   end
 
@@ -14,14 +14,14 @@ describe User do
   end
 
   it "should require an email address" do
-    no_email_user = User.new(@attributes.merge(:email => ""))
+    no_email_user = User.new(@attributes.merge(email: ""))
     no_email_user.wont_be :valid?
   end
 
   it "should accept valid email addresses" do
     addresses = %w[user@foo.com THE_USER@foo.bar.org first.last@foo.jp]
     addresses.each do |address|
-      valid_email_user = User.new(@attributes.merge(:email => address))
+      valid_email_user = User.new(@attributes.merge(email: address))
       valid_email_user.must_be :valid?
     end
   end
@@ -29,7 +29,7 @@ describe User do
   it "should reject invalid email addresses" do
     addresses = %w[user@foo,com user_at_foo.org example.user@foo.]
     addresses.each do |address|
-      invalid_email_user = User.new(@attributes.merge(:email => address))
+      invalid_email_user = User.new(@attributes.merge(email: address))
       invalid_email_user.wont_be :valid?
     end
   end
@@ -43,7 +43,7 @@ describe User do
 
   it "should reject email addresses identical up to case" do
     upcased_email = @attributes[:email].upcase
-    User.create!(@attributes.merge(:email => upcased_email))
+    User.create!(@attributes.merge(email: upcased_email))
     user_with_duplicate_email = User.new(@attributes)
 
     user_with_duplicate_email.wont_be :valid?
@@ -67,18 +67,18 @@ describe User do
     end
 
     it "should require a password" do
-      @attributes.merge!(:password => nil, :password_confirmation => nil)
+      @attributes.merge!(password: nil, password_confirmation: nil)
 
       User.new(@attributes).wont_be :valid?
     end
 
     it "should require a matching password confirmation" do
-      User.new(@attributes.merge(:password_confirmation => "invalid")).wont_be :valid?
+      User.new(@attributes.merge(password_confirmation: "invalid")).wont_be :valid?
     end
 
     it "should reject short passwords" do
       short = "a" * 5
-      @attributes.merge!(:password => short, :password_confirmation => short)
+      @attributes.merge!(password: short, password_confirmation: short)
 
       User.new(@attributes).wont_be :valid?
     end

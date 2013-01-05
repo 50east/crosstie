@@ -43,7 +43,7 @@ module ActiveModel
 
         if options.fetch(:validations, true)
           validates_confirmation_of :password
-          validates_presence_of     :password, :on => :create
+          validates_presence_of     :password, on: :create
 
           before_create { raise "Password digest missing on new record" if password_digest.blank? }
         end
