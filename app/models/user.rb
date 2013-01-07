@@ -8,6 +8,7 @@ class User
   ## Fields
   field :email, type: String, null: true, default: ""
   field :password_digest, type: String, null: true, default: ""
+  field :auth_token, type: String
   field :password_reset_token, type: String
   field :password_reset_sent_at, type: Time
   field :remember_created_at, type: Time
@@ -19,6 +20,9 @@ class User
   index :email, unique: true
 
   has_secure_password validations: false
+
+  ## Callbacks
+  before_save :ensure_auth_token
 
   ## Validations
   validates_presence_of :email
@@ -36,4 +40,26 @@ class User
 
     self.save(validate: false)
   end
+
+  private
+
+  def reset_auth_token
+    self.auth_token = User.generate_token
+  end
+
+  def reset_auth_token!
+    reset_auth_token
+    self.save(:validate => false)
+  end
+
+  def ensure_auth_token
+    reset_auth_token if self.auth_token.blank?
+  end
+
+  public
+
+  def self.generate_token
+    SecureRandom.urlsafe_base64(18).tr('-_', 'Ek')
+  end
+
 end

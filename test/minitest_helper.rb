@@ -11,7 +11,6 @@ require 'mocha/setup'
 DatabaseCleaner.strategy = :truncation
 
 class MiniTest::Spec
-  include ActiveSupport::Testing::SetupAndTeardown
   # include ActiveRecord::TestFixtures
 
   alias :method_name :__name__ if defined? :__name__
