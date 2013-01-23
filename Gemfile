@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.10'
+gem 'rails', '3.2.11'
 gem 'strong_parameters', '~> 0.1.6'
 
 gem 'redis', '~> 3.0.1'
