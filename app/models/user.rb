@@ -49,7 +49,7 @@ class User
 
   def reset_auth_token!
     reset_auth_token
-    self.save(:validate => false)
+    self.save(validate: false)
   end
 
   def ensure_auth_token
