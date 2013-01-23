@@ -1,0 +1,22 @@
+<% title 'Log In' %>
+
+<div class='offset4 span3'>
+
+  <h2>Log In</h2>
+
+  <%= form_tag sessions_path do %>
+    <div class="field">
+    <%= label_tag :email %>
+    <%= email_field_tag :email, nil, :class => 'span3' %></div>
+
+    <div class="field">
+    <%= label_tag :password %>
+    <%= password_field_tag :password, nil, :class => 'span3' %></div>
+
+    <div class="actions">
+      <button type="submit" class="btn pull-right">Log in</button>
+      <%= link_to "Forgot Password?", forgot_password_path %>
+    </div>
+
+  <% end %>
+</div>

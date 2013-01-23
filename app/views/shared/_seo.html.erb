@@ -1,0 +1,13 @@
+<%= tag :meta, :name => 'description', :content => content_for?(:meta_description) ? yield(:meta_description) : '' %>
+<%= tag :meta, :name => 'keywords', :content => content_for?(:meta_keywords) ? yield(:meta_keywords) : '' %>
+<%= tag :meta, :name => 'twitter:card', :content => 'summary' %>
+<%= tag :meta, :name => 'twitter:site', :content => '' %>
+<%= tag :meta, :name => 'twitter:url', :content => '' %>
+<%= tag :meta, :name => 'twitter:title', :content => content_for?(:meta_twitter_title) ? yield(:meta_twitter_title) : '' %>
+<%= tag :meta, :name => 'twitter:description', :content => content_for?(:meta_twitter_description) ? yield(:meta_twitter_description) : '' %>
+<%= tag :meta, :name => 'twitter:image', :content => '' %>
+<%= tag :meta, :property => 'og:type', :content => 'website' %>
+<%= tag :meta, :property => 'og:url', :content => '' %>
+<%= tag :meta, :property => 'og:title', :content => content_for?(:meta_og_title) ? yield(:meta_og_title) : '' %>
+<%= tag :meta, :property => 'og:description', :content => content_for?(:meta_og_description) ? yield(:meta_og_description) : '' %>
+<%= tag :meta, :property => 'og:image', :content => '' %>
