@@ -2,6 +2,10 @@ module ApplicationHelper
   def title(page_title)
     content_for(:title) { page_title }
   end
+  
+  def javascript_manifest(manifest)
+    content_for(:javascript) { javascript_include_tag manifest.to_sym }
+  end
 
   def body_class(html_class)
     content_for(:body_class) { html_class }

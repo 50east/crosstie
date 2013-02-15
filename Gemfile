@@ -13,6 +13,8 @@ gem 'mongoid_auto_inc', '~> 0.1.0'
 gem 'kaminari', '~> 0.14.1'
 gem 'jquery-rails'
 
+gem 'sprockets-commonjs', '~> 0.0.2'
+
 group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
